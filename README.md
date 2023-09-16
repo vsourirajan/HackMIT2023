@@ -1,10 +1,9 @@
 # HackMIT 2023
 
-Project Title: Image Captioning for the Visually Impaired
-Members: Vaibhav Sourirajan
+Project Title: Image Captioning for the Visually Impaired <br />
+Members: Vaibhav Sourirajan <br />
 
-Description:
-This project is 
+Description: 
 
 How to run the web app: 
 - Clone the repo
