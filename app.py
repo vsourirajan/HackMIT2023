@@ -11,7 +11,6 @@ from keras.preprocessing import image, sequence
 import cv2
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tqdm import tqdm
-import pyttsx3
 import gtts
 
 
@@ -87,7 +86,6 @@ def image():
         text_in.append(sampled_word)
 
     final = final.strip().replace(".","")
-    print(final)
 
     tts = gtts.gTTS(final)
     tts.save('static/caption.mp3')

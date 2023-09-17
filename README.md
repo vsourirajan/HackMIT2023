@@ -5,6 +5,10 @@ Members: Vaibhav Sourirajan (Table 47) <br />
 
 Description: This project uses an encoder-decoder architecture to caption images, which are then output as audio. We used a ResNet50 model to create image encodings and an LSTM to predict words of the caption from the image and the already partially-generated sequence. We use Flask to create the web app.
 
+Architecture:
+
+![Alt text](https://github.com/vsourirajan/HackMIT2023/tree/main/static/architecture.png)
+
 Check out a demo here: 
 
 How to run the web app: 
