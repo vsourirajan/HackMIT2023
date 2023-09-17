@@ -3,17 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="icon" href="https://static.thenounproject.com/png/777907-200.png">
 
     <title>Image Captioning App</title>
 
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-
-    <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{url_for('static', filename='cover.css')}}">
 
     <link href="cover.css" rel="stylesheet">
@@ -31,7 +26,7 @@
         <br>Upload image below:<br><br>
 
         <p class="lead">
-          <form action="{{url_for('after')}}" method='POST' enctype='multipart/form-data'>
+          <form action="{{url_for('image')}}" method='POST' enctype='multipart/form-data'>
             <!-- taking input from user -->
             
             <input type="file" name='file1' class="btn btn-secondary">

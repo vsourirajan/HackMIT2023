@@ -11,6 +11,9 @@ from keras.preprocessing import image, sequence
 import cv2
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tqdm import tqdm
+import pyttsx3
+import gtts
+
 
 vocab = np.load('vocab.npy', allow_pickle=True)
 vocab = vocab.item()
@@ -38,10 +41,9 @@ x = Dense(vocab_size)(x)
 out = Activation('softmax')(x)
 model = Model(inputs=[image_model.input, language_model.input], outputs = out)
 model.compile(loss='categorical_crossentropy', optimizer='RMSprop', metrics=['accuracy'])
-model.load_weights('weights.h5')
+model.load_weights('model_weights.h5')
 
 resnet = ResNet50(include_top=False,weights='imagenet',input_shape=(224,224,3),pooling='avg')
-print("RESNET MODEL LOADED")
 
 app = Flask(__name__)
 
@@ -49,16 +51,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/after', methods=['GET', 'POST'])
-def after():
+@app.route('/image', methods=['GET', 'POST'])
+def image():
 
     global model, resnet, vocab, inv_vocab
 
     img = request.files['file1']
-
     img.save('static/file.jpg')
-
-    print("IMAGE SAVED")
 
     image = cv2.imread('static/file.jpg')
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -70,8 +69,6 @@ def after():
 
     final = ''
 
-    print("GETING Captions")
-
     count = 0
     while tqdm(count < 20):
         count += 1
@@ -81,17 +78,18 @@ def after():
             encoded.append(vocab[i])
 
         padded = pad_sequences([encoded], maxlen=max_len, padding='post', truncating='post').reshape(1,max_len)
-
         sampled_index = np.argmax(model.predict([incept, padded]))
-
         sampled_word = inv_vocab[sampled_index]
 
         if sampled_word != 'endofseq':
             final = final + ' ' + sampled_word
         
         text_in.append(sampled_word)
-    
 
-    
+    final = final.strip().replace(".","")
+    print(final)
 
-    return render_template('after.html', data=final.strip().capitalize())
+    tts = gtts.gTTS(final)
+    tts.save('static/caption.mp3')
+
+    return render_template('image.html', data=final)
