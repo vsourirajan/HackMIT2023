@@ -7,7 +7,7 @@ Description: This project uses an encoder-decoder architecture to caption images
 
 Architecture:
 
-![Alt text](https://github.com/vsourirajan/HackMIT2023/tree/main/static/architecture.png)
+<img width="1048" alt="architecture" src="https://github.com/vsourirajan/HackMIT2023/assets/113937608/076f4705-7907-43c0-a6c0-b59f9aa55dac">
 
 Check out a demo here: 
 
