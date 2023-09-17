@@ -9,7 +9,7 @@ Architecture:
 
 <img width="1048" alt="architecture" src="https://github.com/vsourirajan/HackMIT2023/assets/113937608/076f4705-7907-43c0-a6c0-b59f9aa55dac">
 
-Check out a demo here: 
+Check out a quick demo here: https://youtu.be/-Xexk2l7muQ
 
 How to run the web app: 
 - Clone the repo
